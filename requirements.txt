@@ -1,0 +1,11 @@
+feast
+ibis-framework==8.0.0
+scikit-learn
+skl2onnx
+onnxmltools
+xgboost
+mlprodict
+onnxruntime
+tritonclient[grpc]
+mlserver
+pydantic<2.0.0

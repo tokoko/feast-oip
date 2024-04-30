@@ -1,0 +1,10 @@
+{
+    "name": "driver-success-model-onnx",
+    "implementation": "custom_server.MyKulModel",
+    "parameters": {
+        "feature_service": "driver_success",
+        "oip_url": "host.docker.internal:8000",
+        "oip_model": "driver-success-model-onnx"
+    }
+
+}

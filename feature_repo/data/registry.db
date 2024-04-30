@@ -1,0 +1,57 @@
+
+?
+
+driver"	driver_idJ
+feast_repo
+¬¥½±¨êÂÚ¬¥½±¨êÂÚ
+A
+!
+__dummy"
+__dummy_idJ
+feast_repo
+¬¥½±øÞËÚ¬¥½±øÞËÚ
+C
+#
+customer"customer_idJ
+feast_repo
+…¼½±ø®é……¼½±ø®é…1"$ac349318-b6c5-4826-b3df-8502b67329bf*ŸÒ¿±Ð°ú¡2¢
+ï
+driver_hourly_stats
+feast_repodriver"
+	conv_rate"
+acc_rate"(
+avg_daily_trips"Average daily trips*
+teamdriver_performance2€£:Éevent_timestamp*createdZ;9/home/projects/feast-oip/data/driver_hourly_stats.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢9/home/projects/feast-oip/data/driver_hourly_stats.parquet@b
+	driver_id.
+¡Á½±Ä¦£ŸÒ¿±ðÆÔ…
+€‡µÃ€®™¤2“
+à
+customer_daily_profile
+feast_repocustomer"
+current_balance"
+avg_passenger_count"
+lifetime_trip_count2€£:Ïevent_timestamp*createdZ></home/projects/feast-oip/data/customer_daily_profile.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢</home/projects/feast-oip/data/customer_daily_profile.parquet@b
+customer_id.
+ÓÁ½± ß ŸÒ¿±¸Üî¡
+€‡µÃ€®™¤:ç
+Æ
+driver_success
+feast_repo\
+driver_hourly_stats
+	conv_rate
+acc_rate(
+avg_daily_trips"Average daily tripsJ
+customer_daily_profile
+avg_passenger_count
+lifetime_trip_count
+…¼½±˜˜û……¼½±˜˜û…R¡
+
+,feast.infra.online_stores.sqlite.SqliteTable"_
+:/home/projects/feast-oip/feature_repo/data/online_store.db!feast_repo_customer_daily_profile
+Œ
+,feast.infra.online_stores.sqlite.SqliteTable"\
+:/home/projects/feast-oip/feature_repo/data/online_store.dbfeast_repo_driver_hourly_statsbÖevent_timestamp*createdZ;9/home/projects/feast-oip/data/driver_hourly_stats.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢9/home/projects/feast-oip/data/driver_hourly_stats.parquetª
+feast_repobÜevent_timestamp*createdZ></home/projects/feast-oip/data/customer_daily_profile.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢</home/projects/feast-oip/data/customer_daily_profile.parquetª
+feast_repoz2
+
+feast_repo$92298893-d6af-4528-924e-dde3b6f3e674

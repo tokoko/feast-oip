@@ -3,34 +3,44 @@
 # from mlserver.server
 import numpy as np
 import tritonclient.http as httpclient
-# import mlserver
+from pprint import pprint
 
-features = {'driver_id': [101], 'customer_id': [2], 'conv_rate': [0.07080516219139099], 'avg_daily_trips': [103], 'acc_rate': [0.32292142510414124], 'lifetime_trip_count': [862], 'avg_passenger_count': [0.833490788936615]}
+def to_input(features, metadata):
+    inputs = []
 
-triton_client = httpclient.InferenceServerClient(url='host.docker.internal:8000')
-print(triton_client.is_server_live())
-metadata = triton_client.get_model_metadata('driver-success-model-onnx')
-print(metadata)
+    type_map = {
+        'FP32': np.float32,
+        'INT64': np.int64
+    }
 
-# inputs = []
+    for model_input in metadata['inputs']:
+        ii = httpclient.InferInput(model_input['name'], shape=[1, 1], datatype=model_input['datatype'])
+        ar = np.array(features[model_input['name']], type_map[model_input['datatype']])
+        ar = ar.reshape((1, 1))
+        ii.set_data_from_numpy(ar, binary_data=False)
+        inputs.append(ii)
+    return inputs
 
-# type_map = {
-#     'FP32': np.float32,
-#     'INT64': np.int64
-# }
+features = {'driver_id': [102], 'customer_id': [2], 'conv_rate': [0.07080516219139099], 'avg_daily_trips': [103], 'acc_rate': [0.32292142510414124], 'lifetime_trip_count': [862], 'avg_passenger_count': [0.833490788936615]}
 
-# for model_input in metadata['inputs']:
-#     ii = httpclient.InferInput(model_input['name'], shape=[1, 1], datatype=model_input['datatype'])
-#     ar = np.array(features[model_input['name']], type_map[model_input['datatype']])
-#     ar = ar.reshape((1, 1))
-#     ii.set_data_from_numpy(ar)
-#     inputs.append(ii)
-#     # inputs.append(httpclient.InferInput(model_input['name'], shape=[-1, 1], datatype=model_input['datatype']))
-
-# res = triton_client.infer('driver-success-model-onnx', inputs=inputs)
+# triton_client = httpclient.InferenceServerClient(url='host.docker.internal:8000')
+# print(triton_client.is_server_live())
+# metadata = triton_client.get_model_metadata('driver-success-model-onnx')
+# pprint(metadata)
+# res = triton_client.infer('driver-success-model-onnx', inputs=to_input(features=features, metadata=metadata))
 # print(res.as_numpy('probabilities'))
 
+#########################################################################################################################################################
 
+
+triton_client = httpclient.InferenceServerClient(url='127.0.0.1:8080')
+# print(triton_client.is_server_live())
+metadata = triton_client.get_model_metadata('driver-success-model-onnx')
+# pprint(metadata)
+
+res = triton_client.infer('driver-success-model-onnx', inputs=to_input(features=features, metadata=metadata))
+print(res.as_numpy('probabilities'))
+print(res.as_numpy('label'))
 # inputs.append(httpclient.InferInput("INPUT0", [1, 16], "INT32"))
 # inputs.append(httpclient.InferInput("INPUT1", [1, 16], "INT32"))
 
@@ -38,11 +48,11 @@ print(metadata)
 # inputs[0].set_data_from_numpy(input0_data, binary_data=False)
 # inputs[1].set_data_from_numpy(input1_data, binary_data=True)
 
-triton_client = httpclient.InferenceServerClient(url='localhost:8080')
-print(triton_client.is_server_live())
-metadata = triton_client.get_model_metadata('driver-success-model-onnx')
+# triton_client = httpclient.InferenceServerClient(url='localhost:8080')
+# print(triton_client.is_server_live())
+# metadata = triton_client.get_model_metadata('driver-success-model-onnx')
 
-print(triton_client.infer(model_name='driver-success-model-onnx', inputs=[]).as_numpy('probabilities'))
+# print(triton_client.infer(model_name='driver-success-model-onnx', inputs=[]).as_numpy('probabilities'))
 
 
 

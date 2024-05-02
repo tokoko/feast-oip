@@ -1,11 +1,10 @@
-feast
-ibis-framework==8.0.0
+feast ##==0.37.1
+ibis-framework[duckdb]==8.0.0
 scikit-learn
 skl2onnx
 onnxmltools
-xgboost
-mlprodict
 onnxruntime
 tritonclient[grpc]
 mlserver
+mlflow
 pydantic<2.0.0

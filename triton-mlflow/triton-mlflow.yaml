@@ -1,6 +1,6 @@
 models:
 - name: driver-success-model-onnx
   versions:
-  - version: '2'
+  - version: '1'
     registered_model_name: driver-success-model-onnx
-    registered_model_version: '2'
+    registered_model_version: '1'
